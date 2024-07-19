@@ -1,0 +1,41 @@
+:host {
+  display: block;
+  height: 100vh;
+  width: 100vw;
+  background-color: #e0f7fa;
+}
+
+.login-form-container {
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  height: 40vh;
+  max-height: 500px;
+  display: flex;
+  flex-direction: column;
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex: 1;
+}
+
+.btn-block {
+  width: 100%;
+}
+
+.form-control {
+  width: 100%;
+}
+
+.container, .row {
+  height: 100%;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+}

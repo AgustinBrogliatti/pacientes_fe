@@ -1,23 +1,35 @@
-<div class="container">
-  <div class="row justify-content-center">
-    <div class="col-md-6">
-      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-        <div class="form-group">
-          <label for="username">Usuario</label>
-          <input type="text" id="username" formControlName="username" class="form-control" [ngClass]="{'is-invalid': submitted && f['username'].errors}" />
-          <div *ngIf="submitted && f['username'].errors" class="invalid-feedback">
-            <div *ngIf="f['username'].errors['required']">El usuario es obligatorio</div>
+<div class="container h-100">
+  <div class="row h-100 justify-content-center align-items-center">
+    <div class="col-md-4">
+      <div class="login-form-container">
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+          <div class="form-container">
+            <div>
+              <div class="form-group">
+                <label for="username">Usuario</label>
+                <input type="text" id="username" formControlName="username" class="form-control" [ngClass]="{'is-invalid': submitted && f['username'].errors}" />
+                <div *ngIf="submitted && f['username'].errors" class="invalid-feedback">
+                  <div *ngIf="f['username'].errors['required']">El usuario es obligatorio</div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="password">Contraseña</label>
+                <input type="password" id="password" formControlName="password" class="form-control" [ngClass]="{'is-invalid': submitted && f['password'].errors}" />
+                <div *ngIf="submitted && f['password'].errors" class="invalid-feedback">
+                  <div *ngIf="f['password'].errors['required']">La contraseña es obligatoria</div>
+                </div>
+              </div>
+              <div class="form-group form-check mt-2">
+                <input type="checkbox" id="rememberMe" formControlName="rememberMe" class="form-check-input" />
+                <label for="rememberMe" class="form-check-label">Recordarme</label>
+              </div>
+            </div>
+            <div>
+              <button type="submit" class="btn btn-primary btn-block">Ingresar</button>
+            </div>
           </div>
-        </div>
-        <div class="form-group">
-          <label for="password">Contraseña</label>
-          <input type="password" id="password" formControlName="password" class="form-control" [ngClass]="{'is-invalid': submitted && f['password'].errors}" />
-          <div *ngIf="submitted && f['password'].errors" class="invalid-feedback">
-            <div *ngIf="f['password'].errors['required']">La contraseña es obligatoria</div>
-          </div>
-        </div>
-        <button type="submit" class="btn btn-primary">Ingresar</button>
-      </form>
+        </form>
+      </div>
     </div>
   </div>
 </div>
