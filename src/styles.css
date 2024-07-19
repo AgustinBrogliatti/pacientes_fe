@@ -4,3 +4,12 @@ html, body {
   margin: 0;
   padding: 0;
 }
+
+:root {
+  --primary-color: #1A237E;
+  --primary-hover-color: #2e3681;
+  --secondary-color: rgba(92, 107, 192, 1);
+  --secondary-hover-color: rgba(92, 107, 192, 0.8);
+
+}
+

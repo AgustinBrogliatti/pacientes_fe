@@ -1,0 +1,22 @@
+.custom-navbar {
+  background-color: var(--primary-color);
+  color: #FFFFFF;
+}
+
+.custom-btn {
+  background-color: var(--secondary-color);
+  color: #FFFFFF;
+  border: none;
+}
+
+.custom-btn:hover {
+  background-color: var(--secondary-hover-color);
+}
+
+.navbar-brand {
+  color: #FFFFFF;
+}
+
+.navbar-brand:hover {
+  color: #FFFFFF;
+}

@@ -1,0 +1,48 @@
+<div class="card">
+  <div class="card-header d-flex align-items-center">
+    <div class="dropdown me-2">
+      <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+        Buscar por {{filterSelected.title}}
+      </button>
+      <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <li *ngFor="let option of filterOptions">
+          <a class="dropdown-item" (click)="selectFilter(option)">{{option.title}}</a>
+        </li>
+      </ul>
+    </div>
+    <div class="input-group ml-3 ps-0">
+      <input type="text" class="form-control" [(ngModel)]="search" placeholder="Filtro">
+      <div class="input-group-append ms-3">
+        <button class="btn btn-outline-secondary" type="button" (click)="searchUser()">Buscar</button>
+      </div>
+    </div>
+  </div>
+  <div class="table-responsive ms-3">
+    <table class="table table-hover">
+      <thead>
+      <tr>
+        <th>DNI</th>
+        <th>Apellido</th>
+        <th>Nombre</th>
+        <th>Cobertura Médica</th>
+        <th>Cel</th>
+        <th>Dr.</th>
+        <th></th>
+        <th></th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let paciente of pacientes">
+        <td class="align-middle"><div>{{paciente.dni}}</div></td>
+        <td class="align-middle">{{paciente.lastname}}</td>
+        <td class="align-middle">{{paciente.name}}</td>
+        <td class="align-middle">{{paciente.medical_coverage}} - {{paciente.medical_cover_id}}</td>
+        <td class="align-middle">{{paciente.personal_number}}</td>
+        <td class="align-middle">{{paciente.dr}}</td>
+        <td class="align-middle"><button class="btn btn-custom btn-sm">Detalles</button></td>
+        <td class="align-middle"><button class="btn btn-add btn-sm" (click)="addToLine(paciente)">+</button></td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
