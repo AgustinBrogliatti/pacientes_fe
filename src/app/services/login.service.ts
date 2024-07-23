@@ -26,8 +26,11 @@ export class LoginService {
   }
 
   isUserLogin(): Observable<boolean> {
-    this.isLoggedUser = !!localStorage.getItem("token")
-    return of(this.isLoggedUser)
+    const token = localStorage.getItem('token');
+    if (!token) {
+      return of(false);
+    }
+    return this.apiService.verifyToken(token);
   }
 
   logout() {

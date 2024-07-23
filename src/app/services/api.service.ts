@@ -20,6 +20,10 @@ export class ApiService {
     return {headers: { 'Authorization': 'Bearer ' + this.getToken()} }
   }
 
+  verifyToken(token: string): Observable<boolean> {
+    return this.http.post<boolean>(this._url + `auth/validate-token`, { token })
+  }
+
   login(username: string, password: string): Observable<ResponseLoginDTO> {
     return this.http.post<ResponseLoginDTO>(this._url + 'auth/login', {username: username, password: password})
   }
