@@ -32,15 +32,15 @@
       </tr>
       </thead>
       <tbody>
-      <tr *ngFor="let paciente of pacientes">
-        <td class="align-middle"><div>{{paciente.dni}}</div></td>
-        <td class="align-middle">{{paciente.lastname}}</td>
-        <td class="align-middle">{{paciente.name}}</td>
-        <td class="align-middle">{{paciente.medical_coverage}} - {{paciente.medical_cover_id}}</td>
-        <td class="align-middle">{{paciente.personal_number}}</td>
-        <td class="align-middle">{{paciente.dr}}</td>
+      <tr *ngFor="let record of records">
+        <td class="align-middle"><div>{{record.patientDni}}</div></td>
+        <td class="align-middle">{{record.patientLastname}}</td>
+        <td class="align-middle">{{record.patientName}}</td>
+        <td class="align-middle">{{record.healthInsurances}}</td>
+        <td class="align-middle">{{record.patientPhoneNumber}}</td>
+        <td class="align-middle">{{record.doctorName}}</td>
         <td class="align-middle"><button class="btn btn-custom btn-sm">Detalles</button></td>
-        <td class="align-middle"><button class="btn btn-add btn-sm" (click)="addToLine(paciente)">+</button></td>
+        <td class="align-middle"><button class="btn btn-add btn-sm" (click)="addToLine(record)">+</button></td>
       </tr>
       </tbody>
     </table>

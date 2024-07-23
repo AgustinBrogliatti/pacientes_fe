@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {ResponseLoginDTO} from "../dto/ResponseLoginDTO";
 import {Observable} from "rxjs";
 import {HttpClient} from "@angular/common/http";
+import {MedicalRecord} from "../model/MedicalRecord";
 
 @Injectable({
   providedIn: 'root'
@@ -27,4 +28,9 @@ export class ApiService {
   login(username: string, password: string): Observable<ResponseLoginDTO> {
     return this.http.post<ResponseLoginDTO>(this._url + 'auth/login', {username: username, password: password})
   }
+
+  getAllRecords(): Observable<MedicalRecord[]> {
+    return this.http.get<MedicalRecord[]>(this._url + 'medical-record', this.getAuthHeader())
+  }
+
 }
