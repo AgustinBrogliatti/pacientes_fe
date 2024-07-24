@@ -3,6 +3,7 @@ import { Observable, of } from 'rxjs';
 import { ApiService } from './api.service';
 import {RecordPreview} from "../model/RecordPreview";
 import {MedicalRecord} from "../model/MedicalRecord";
+import {Patient} from "../model/Patient";
 @Injectable({
   providedIn: 'root'
 })
@@ -15,7 +16,7 @@ export class RecordService {
     return this.api.getAllRecords();
   }
 
-  getRecordById(id: number): Observable<MedicalRecord> {
-    return this.api.getRecordById(id);
+  getRecordById(recordId: number): Observable<MedicalRecord> {
+    return this.api.getRecordById(recordId);
   }
 }

@@ -1,34 +1,68 @@
 <div class="modal-header">
-  <h4 class="modal-title">Detalles del Registro Médico</h4>
-  <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+  <h4 class="modal-title">Datos del Paciente</h4>
+  <button type="button" class="close" aria-label="Close" (click)="activeModal.close()">
     <span aria-hidden="true">&times;</span>
   </button>
 </div>
-<div class="modal-body" *ngIf="record">
-  <form>
+<div class="modal-body">
+  <form #patientForm="ngForm">
+    <!-- Fila 1: Apellido - Nombre -->
     <div class="form-group">
-      <label for="patientDni">DNI del Paciente</label>
-      <input type="text" class="form-control" id="patientDni" [value]="record.patient.dni" readonly>
+      <div class="form-row">
+        <div class="form-group flex-item">
+          <input type="text" id="lastname" class="form-control" [(ngModel)]="record.patient.lastname" name="lastname" placeholder="Apellido" [ngClass]="{'disabled-input': !isEditing}" required />
+        </div>
+        <div class="form-group flex-item">
+          <input type="text" id="name" class="form-control" [(ngModel)]="record.patient.name" name="name" placeholder="Nombre" [ngClass]="{'disabled-input': !isEditing}" required />
+        </div>
+      </div>
     </div>
+
+    <!-- Fila 2: DNI - Fecha de Nacimiento -->
     <div class="form-group">
-      <label for="patientName">Nombre del Paciente</label>
-      <input type="text" class="form-control" id="patientName" [value]="record.patient.name" readonly>
+      <div class="form-row">
+        <div class="form-group flex-item">
+          <input type="number" id="dni" class="form-control disabled-input" [(ngModel)]="record.patient.dni" name="dni" placeholder="DNI" required disabled readonly/>
+        </div>
+        <div class="form-group flex-item">
+          <input type="date" id="birthDate" class="form-control" [(ngModel)]="record.patient.birthDate" name="birthDate" placeholder="Fecha de Nacimiento" [ngClass]="{'disabled-input': !isEditing}" required />
+        </div>
+      </div>
     </div>
+
+    <!-- Fila 3: Obra Social - Número de Obra Social - Doctor -->
     <div class="form-group">
-      <label for="patientLastname">Apellido del Paciente</label>
-      <input type="text" class="form-control" id="patientLastname" [value]="record.patient.lastname" readonly>
+      <div class="form-row">
+        <div class="form-group flex-item">
+          <input type="text" id="healthInsurances" class="form-control" [(ngModel)]="record.healthInsurances" name="healthInsurances" placeholder="Obra Social" [ngClass]="{'disabled-input': !isEditing}" required />
+        </div>
+        <div class="form-group flex-item">
+          <input type="text" id="healthInsuranceNumber" class="form-control" name="healthInsuranceNumber" placeholder="Número de Credencial" [ngClass]="{'disabled-input': !isEditing}" required />
+        </div>
+        <div class="form-group flex-item">
+          <input type="text" id="doctorName" class="form-control" [(ngModel)]="record.doctorName" name="doctorName" placeholder="Doctor" [ngClass]="{'disabled-input': !isEditing}" required />
+        </div>
+      </div>
     </div>
+
+    <!-- Fila 4: Número de Contacto - Email - Dirección -->
     <div class="form-group">
-      <label for="healthInsurances">Seguros de Salud</label>
-      <input type="text" class="form-control" id="healthInsurances" [value]="record.healthInsurances" readonly>
+      <div class="form-row">
+        <div class="form-group flex-item">
+          <input type="text" id="phoneNumber" class="form-control" [(ngModel)]="record.patient.phoneNumber" name="phoneNumber" placeholder="Número de Contacto" [ngClass]="{'disabled-input': !isEditing}" required />
+        </div>
+        <div class="form-group flex-item">
+          <input type="email" id="email" class="form-control" [(ngModel)]="record.patient.email" name="email" placeholder="Email" [ngClass]="{'disabled-input': !isEditing}" required />
+        </div>
+        <div class="form-group flex-item">
+          <textarea id="address" class="form-control" [(ngModel)]="record.patient.address" name="address" placeholder="Dirección" rows="2" [ngClass]="{'disabled-input': !isEditing}" required></textarea>
+        </div>
+      </div>
     </div>
-    <div class="form-group">
-      <label for="doctorName">Nombre del Doctor</label>
-      <input type="text" class="form-control" id="doctorName" [value]="record.doctorName" readonly>
-    </div>
-    <!-- Agrega más campos según sea necesario -->
   </form>
 </div>
 <div class="modal-footer">
-  <button type="button" class="btn btn-secondary" (click)="activeModal.dismiss('Close click')">Cerrar</button>
+  <button type="button" class="btn btn-secondary" (click)="activeModal.close()">Cerrar</button>
+  <button type="button" class="btn btn-primary" (click)="editPatient()" *ngIf="!isEditing">Editar Paciente</button>
+  <button type="button" class="btn btn-primary" (click)="updatePatient()" *ngIf="isEditing">Guardar</button>
 </div>

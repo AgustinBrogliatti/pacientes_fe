@@ -4,6 +4,7 @@ import {Observable} from "rxjs";
 import {HttpClient} from "@angular/common/http";
 import {RecordPreview} from "../model/RecordPreview";
 import {MedicalRecord} from "../model/MedicalRecord";
+import {Patient} from "../model/Patient";
 
 @Injectable({
   providedIn: 'root'
@@ -34,8 +35,12 @@ export class ApiService {
     return this.http.get<RecordPreview[]>(this._url + 'medical-record', this.getAuthHeader())
   }
 
-  getRecordById(id: number): Observable<MedicalRecord> {
-    return this.http.get<MedicalRecord>(this._url + 'medical-record/' + id, this.getAuthHeader())
+  getRecordById(recordId: number): Observable<MedicalRecord> {
+    return this.http.get<MedicalRecord>(this._url + 'medical-record/' + recordId, this.getAuthHeader())
+  }
+
+  updatePatient(recordId: number, patient: Patient): Observable<Patient> {
+    return this.http.put<Patient>(this._url + 'medical-record/' + recordId + '/patient', patient, this.getAuthHeader())
   }
 
 }

@@ -1,0 +1,53 @@
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.modal-title {
+  margin: 0;
+}
+
+.close {
+  font-size: 1.5rem;
+  border: none;
+  background: none;
+}
+
+.modal-body {
+  padding: 1.5rem;
+}
+
+.form-group {
+  margin-bottom: 1rem;
+
+}
+
+.form-row {
+  display: flex;
+  align-items: center;
+}
+
+.flex-item {
+  flex: 1;
+  margin-right: 0.5rem;
+}
+
+.form-row .form-control {
+  width: 100%;
+}
+
+textarea.form-control {
+  width: 100%;
+}
+
+.modal-footer {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.disabled-input {
+  background-color: #e9ecef;
+  pointer-events: none;
+  opacity: 0.7;
+}
