@@ -1,0 +1,34 @@
+<div class="modal-header">
+  <h4 class="modal-title">Detalles del Registro Médico</h4>
+  <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body" *ngIf="record">
+  <form>
+    <div class="form-group">
+      <label for="patientDni">DNI del Paciente</label>
+      <input type="text" class="form-control" id="patientDni" [value]="record.patient.dni" readonly>
+    </div>
+    <div class="form-group">
+      <label for="patientName">Nombre del Paciente</label>
+      <input type="text" class="form-control" id="patientName" [value]="record.patient.name" readonly>
+    </div>
+    <div class="form-group">
+      <label for="patientLastname">Apellido del Paciente</label>
+      <input type="text" class="form-control" id="patientLastname" [value]="record.patient.lastname" readonly>
+    </div>
+    <div class="form-group">
+      <label for="healthInsurances">Seguros de Salud</label>
+      <input type="text" class="form-control" id="healthInsurances" [value]="record.healthInsurances" readonly>
+    </div>
+    <div class="form-group">
+      <label for="doctorName">Nombre del Doctor</label>
+      <input type="text" class="form-control" id="doctorName" [value]="record.doctorName" readonly>
+    </div>
+    <!-- Agrega más campos según sea necesario -->
+  </form>
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-secondary" (click)="activeModal.dismiss('Close click')">Cerrar</button>
+</div>

@@ -39,7 +39,7 @@
         <td class="align-middle">{{record.healthInsurances}}</td>
         <td class="align-middle">{{record.patientPhoneNumber}}</td>
         <td class="align-middle">{{record.doctorName}}</td>
-        <td class="align-middle"><button class="btn btn-custom btn-sm">Detalles</button></td>
+        <td class="align-middle"><button class="btn btn-custom btn-sm" (click)="record.id && openRecord(record.id)">Detalles</button></td>
         <td class="align-middle"><button class="btn btn-add btn-sm" (click)="addToLine(record)">+</button></td>
       </tr>
       </tbody>

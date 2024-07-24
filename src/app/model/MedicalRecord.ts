@@ -1,25 +1,32 @@
+import { Patient } from './Patient';
+
 export class MedicalRecord {
   id?: number;
-  patientDni: number;
-  patientLastname: string;
-  patientName: string;
-  healthInsurances: string;
-  patientPhoneNumber: string;
+  doctorId: number;
   doctorName: string;
+  patient: Patient;
+  healthInsurances: string;
+  allergies: string;
+  medicines: string;
+  previousHistory: string;
 
   constructor(
-    patientDni: number,
-    patientLastname: string,
-    patientName: string,
+    doctorId: number,
+    doctorName: string,
+    patient: Patient,
     healthInsurances: string,
-    patientPhoneNumber: string,
-    doctorName: string
+    allergies: string,
+    medicines: string,
+    previousHistory: string,
+    id?: number
   ) {
-    this.patientDni = patientDni;
-    this.patientLastname = patientLastname;
-    this.patientName = patientName;
-    this.healthInsurances = healthInsurances;
-    this.patientPhoneNumber = patientPhoneNumber;
+    this.id = id;
+    this.doctorId = doctorId;
     this.doctorName = doctorName;
+    this.patient = patient;
+    this.healthInsurances = healthInsurances;
+    this.allergies = allergies;
+    this.medicines = medicines;
+    this.previousHistory = previousHistory;
   }
 }

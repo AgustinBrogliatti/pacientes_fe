@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {RecordService} from "../../services/record.service";
-import {MedicalRecord} from "../../model/MedicalRecord";
+import {RecordPreview} from "../../model/RecordPreview";
+import { RecordDetailModalComponent } from '../record-detail-modal/record-detail-modal.component';
+import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
 
 @Component({
   selector: 'app-patients-table',
@@ -9,7 +11,7 @@ import {MedicalRecord} from "../../model/MedicalRecord";
 })
 export class PatientsTableComponent implements OnInit {
   search = '';
-  records: MedicalRecord[] = [];
+  records: RecordPreview[] = [];
 
   filterSelected = { title: 'DNI', key: 'dni' };
   filterOptions = [
@@ -18,26 +20,33 @@ export class PatientsTableComponent implements OnInit {
   ];
 
 
-  constructor(private recordService:RecordService) {}
+  constructor(private recordService:RecordService, private modalService: NgbModal) {}
 
 
   ngOnInit(): void {
     this.recordService.getAllRecords().subscribe(
       (data) => {
-        console.log(data);
         this.records = data
       }
     )
   }
+
   searchUser() {
     // Lógica para buscar patients
+  }
+
+  selectFilter(option: any) {
+    this.filterSelected = option;
+  }
+
+  openRecord(id: number) {
+    const modalRef = this.modalService.open(RecordDetailModalComponent, { centered: true });
+    modalRef.componentInstance.recordId = id;
   }
 
   addToLine(paciente: any) {
     // Lógica para añadir paciente a la fila de espera
   }
 
-  selectFilter(option: any) {
-    this.filterSelected = option;
-  }
+
 }
