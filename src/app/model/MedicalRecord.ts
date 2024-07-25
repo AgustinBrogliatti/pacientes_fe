@@ -1,32 +1,29 @@
 import { Patient } from './Patient';
 
 export class MedicalRecord {
-  id?: number;
-  doctorId: number;
-  doctorName: string;
   patient: Patient;
+  doctor: { id: number };
   healthInsurances: string;
   allergies: string;
   medicines: string;
   previousHistory: string;
+  id?: number;
 
   constructor(
-    doctorId: number,
-    doctorName: string,
     patient: Patient,
+    doctorId: number,
     healthInsurances: string,
     allergies: string,
     medicines: string,
     previousHistory: string,
     id?: number
   ) {
-    this.id = id;
-    this.doctorId = doctorId;
-    this.doctorName = doctorName;
     this.patient = patient;
+    this.doctor = { id: doctorId };
     this.healthInsurances = healthInsurances;
     this.allergies = allergies;
     this.medicines = medicines;
     this.previousHistory = previousHistory;
+    this.id = id;
   }
 }

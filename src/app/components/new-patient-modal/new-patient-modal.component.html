@@ -1,0 +1,66 @@
+<div class="modal-header">
+  <h4 class="modal-title">Nuevo Paciente</h4>
+  <button type="button" class="close" aria-label="Close" (click)="activeModal.close()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <form #patientForm="ngForm">
+    <!-- Fila 1: Apellido - Nombre -->
+    <div class="form-group">
+      <div class="form-row">
+        <div class="form-group flex-item">
+          <input type="text" id="lastname" class="form-control" [(ngModel)]="record.patient.lastname" name="lastname" placeholder="Apellido" required />
+        </div>
+        <div class="form-group flex-item">
+          <input type="text" id="name" class="form-control" [(ngModel)]="record.patient.name" name="name" placeholder="Nombre" required />
+        </div>
+      </div>
+    </div>
+
+    <!-- Fila 2: DNI - Fecha de Nacimiento -->
+    <div class="form-group">
+      <div class="form-row">
+        <div class="form-group flex-item">
+          <input type="number" id="dni" class="form-control" [(ngModel)]="record.patient.dni" name="dni" placeholder="DNI" required/>
+        </div>
+        <div class="form-group flex-item">
+          <input type="date" id="birthDate" class="form-control" [(ngModel)]="record.patient.birthDate" name="birthDate" placeholder="Fecha de Nacimiento" required />
+        </div>
+      </div>
+    </div>
+
+    <!-- Fila 3: Obra Social - Número de Obra Social - Doctor -->
+    <div class="form-group">
+      <div class="form-row">
+        <div class="form-group flex-item">
+          <input type="text" id="healthInsurances" class="form-control" [(ngModel)]="record.healthInsurances" name="healthInsurances" placeholder="Obra Social" required />
+        </div>
+        <div class="form-group flex-item">
+          <input type="text" id="healthInsuranceNumber" class="form-control" name="healthInsuranceNumber" placeholder="Número de Credencial" required />
+        </div>
+        <div class="form-group flex-item">
+          <input type="text" id="doctorName" class="form-control" [(ngModel)]="record.doctor.id" name="doctorName" placeholder="Doctor" required />
+        </div>
+      </div>
+    </div>
+
+    <!-- Fila 4: Número de Contacto - Email - Dirección -->
+    <div class="form-group">
+      <div class="form-row">
+        <div class="form-group flex-item">
+          <input type="text" id="phoneNumber" class="form-control" [(ngModel)]="record.patient.phoneNumber" name="phoneNumber" placeholder="Número de Contacto" required />
+        </div>
+        <div class="form-group flex-item">
+          <input type="email" id="email" class="form-control" [(ngModel)]="record.patient.email" name="email" placeholder="Email" required />
+        </div>
+        <div class="form-group flex-item">
+          <textarea id="address" class="form-control" [(ngModel)]="record.patient.address" name="address" placeholder="Dirección" rows="2" required></textarea>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-primary" (click)="createPatient()">Crear</button>
+</div>

@@ -25,17 +25,16 @@ export class RecordDetailModalComponent implements OnInit {
     }
   }
 
-
   editPatient() {
     this.isEditing = true;
   }
 
-    updatePatient(): void {
-      if (this.recordId && this.isEditing) {
-        this.patientService.updatePatient(this.recordId, this.record.patient).subscribe((data: Patient) => {
-          this.isEditing = false;
-          this.record.patient = data;
-        });
-      }
+  updatePatient(): void {
+    if (this.recordId && this.isEditing) {
+      this.patientService.updatePatient(this.recordId, this.record.patient).subscribe((data: Patient) => {
+        this.isEditing = false;
+        this.record.patient = data;
+      });
     }
+  }
 }

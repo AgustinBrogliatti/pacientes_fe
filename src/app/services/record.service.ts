@@ -15,8 +15,11 @@ export class RecordService {
   getAllRecords(): Observable<RecordPreview[]> {
     return this.api.getAllRecords();
   }
-
   getRecordById(recordId: number): Observable<MedicalRecord> {
     return this.api.getRecordById(recordId);
+  }
+
+  createRecord(newRecord: MedicalRecord): Observable<MedicalRecord> {
+    return this.api.createRecord(newRecord);
   }
 }

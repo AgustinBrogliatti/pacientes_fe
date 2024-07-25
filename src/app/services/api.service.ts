@@ -20,7 +20,10 @@ export class ApiService {
   }
 
   getAuthHeader(): object {
-    return {headers: { 'Authorization': 'Bearer ' + this.getToken()} }
+    return { headers: {
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + this.getToken()
+    }};
   }
 
   verifyToken(token: string): Observable<boolean> {
@@ -41,6 +44,11 @@ export class ApiService {
 
   updatePatient(recordId: number, patient: Patient): Observable<Patient> {
     return this.http.put<Patient>(this._url + 'medical-record/' + recordId + '/patient', patient, this.getAuthHeader())
+  }
+
+  createRecord(newRecord: MedicalRecord): Observable<MedicalRecord> {
+    console.log(newRecord)
+    return this.http.post<MedicalRecord>(this._url + 'medical-record', newRecord, this.getAuthHeader())
   }
 
 }

@@ -14,6 +14,7 @@ import { PatientsTableComponent } from './components/patients-table/patients-tab
 import { CardListComponent } from './components/card-list/card-list.component';
 import { RecordDetailModalComponent } from './components/record-detail-modal/record-detail-modal.component';
 import {RecordService} from "./services/record.service";
+import { NewPatientModalComponent } from './components/new-patient-modal/new-patient-modal.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import {RecordService} from "./services/record.service";
     NavbarComponent,
     PatientsTableComponent,
     CardListComponent,
-    RecordDetailModalComponent
+    RecordDetailModalComponent,
+    NewPatientModalComponent
   ],
   imports: [
     BrowserModule,

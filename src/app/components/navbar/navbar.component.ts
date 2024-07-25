@@ -1,6 +1,8 @@
-import { Component } from '@angular/core';
+import {Component, Input} from '@angular/core';
 import { Router } from '@angular/router';
 import { LoginService } from '../../services/login.service';
+import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
+import {NewPatientModalComponent} from "../new-patient-modal/new-patient-modal.component";
 
 @Component({
   selector: 'app-navbar',
@@ -9,7 +11,12 @@ import { LoginService } from '../../services/login.service';
 })
 export class NavbarComponent {
 
-  constructor(private loginService: LoginService, private router: Router) {}
+  constructor(private loginService: LoginService, private router: Router, private modalService: NgbModal) {}
+
+  openNewPatientModal() {
+    const modalRef = this.modalService.open(NewPatientModalComponent, { centered: true });
+    modalRef.componentInstance.isNewPatient = true;
+  }
 
   logout() {
     this.loginService.logout();
