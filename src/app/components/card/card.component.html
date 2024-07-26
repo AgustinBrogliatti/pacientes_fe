@@ -1,0 +1,9 @@
+<div class="card flex-row flex-nowrap justify-content-between m-2 p-2">
+  <div class="card-content">
+    {{ displayText }}
+  </div>
+  <div class="card-actions">
+    <fa-icon [icon]="faEllipsisH" class="more-action" (click)="onMoreClick()"></fa-icon>
+    <fa-icon [icon]="faTimes" class="btn-close" (click)="onCloseClick()"></fa-icon>
+  </div>
+</div>

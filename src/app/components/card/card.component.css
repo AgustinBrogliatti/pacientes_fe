@@ -1,0 +1,56 @@
+.card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 8px;
+  padding: 10px 20px;
+  margin: 5px 0;
+  background-color: var(--secondary-color);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  color: white;
+  border-color: var(--secondary-color);
+}
+
+.card-content {
+  flex-grow: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.card-actions {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.more-action,
+.btn-close {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 24px;
+  height: 24px;
+  padding: 4px;
+  cursor: pointer;
+  border-radius: 50%;
+  transition: background-color 0.3s ease;
+}
+
+.more-action:hover,
+.btn-close:hover {
+  background-color: rgba(128, 128, 128, 0.1);
+}
+
+.more-action {
+  margin-right: 5px;
+}
+
+.more-action:hover {
+  background-color: rgba(128, 128, 128, 0.1);
+}
+
+.btn-close:hover {
+  background-color: rgba(128, 128, 128, 0.1);
+}

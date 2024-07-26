@@ -4,6 +4,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import {HttpClientModule} from "@angular/common/http";
 import {AppRoutingModule} from "./app-routing.module";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
@@ -15,6 +16,7 @@ import { CardListComponent } from './components/card-list/card-list.component';
 import { RecordDetailModalComponent } from './components/record-detail-modal/record-detail-modal.component';
 import {RecordService} from "./services/record.service";
 import { NewPatientModalComponent } from './components/new-patient-modal/new-patient-modal.component';
+import { CardComponent } from './components/card/card.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,8 @@ import { NewPatientModalComponent } from './components/new-patient-modal/new-pat
     PatientsTableComponent,
     CardListComponent,
     RecordDetailModalComponent,
-    NewPatientModalComponent
+    NewPatientModalComponent,
+    CardComponent
   ],
   imports: [
     BrowserModule,
@@ -34,7 +37,8 @@ import { NewPatientModalComponent } from './components/new-patient-modal/new-pat
     ReactiveFormsModule,
     FormsModule,
     HttpClientModule,
-    NgbModule
+    NgbModule,
+    FontAwesomeModule
   ],
   providers: [RecordService],
   bootstrap: [AppComponent]

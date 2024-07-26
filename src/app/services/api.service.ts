@@ -5,6 +5,7 @@ import {HttpClient} from "@angular/common/http";
 import {RecordPreview} from "../model/RecordPreview";
 import {MedicalRecord} from "../model/MedicalRecord";
 import {Patient} from "../model/Patient";
+import {Room} from "../model/Room";
 
 @Injectable({
   providedIn: 'root'
@@ -47,8 +48,19 @@ export class ApiService {
   }
 
   createRecord(newRecord: MedicalRecord): Observable<MedicalRecord> {
-    console.log(newRecord)
     return this.http.post<MedicalRecord>(this._url + 'medical-record', newRecord, this.getAuthHeader())
+  }
+
+  getRooms(): Observable<Room[]> {
+    return this.http.get<Room[]>(this._url + 'room', this.getAuthHeader())
+  }
+
+  getPatientsRoom(roomId: number): Observable<Patient[]> {
+    return this.http.get<Patient[]>(this._url + 'room/' + roomId + '/patients', this.getAuthHeader())
+  }
+
+  detelePatienfromRoom(patientDni: number, roomId: number): Observable<Room> {
+    return this.http.delete<Room>(this._url + 'room/' + roomId + '/patients?patientId=' + patientDni, this.getAuthHeader())
   }
 
 }

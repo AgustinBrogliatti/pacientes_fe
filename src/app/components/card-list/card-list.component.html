@@ -1,1 +1,25 @@
-<p>card-list</p>
+<div class="card-list">
+  <div class="title p-2">
+    <div class="dropdown">
+      <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+        Consultorio {{ selectedRoom?.name || 'Selecciona un consultorio' }}
+      </button>
+      <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <li *ngFor="let room of rooms">
+          <a class="dropdown-item" (click)="selectRoom(room)">
+            {{ room.name }}
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="body p-2">
+    <app-card
+      *ngFor="let card of cards"
+      [patient]="card"
+      [roomId]="selectedRoom?.id"
+      (moreClicked)="onMoreClick()"
+      (closeClicked)="onCloseClick()">
+    </app-card>
+  </div>
+</div>
