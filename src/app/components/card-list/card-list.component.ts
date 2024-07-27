@@ -3,6 +3,7 @@ import {Patient} from "../../model/Patient";
 import {Room} from "../../model/Room";
 import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
 import {RoomService} from "../../services/room.service";
+import {StoreService} from "../../services/store.service";
 
 @Component({
   selector: 'app-card-list',
@@ -14,10 +15,15 @@ export class CardListComponent implements OnInit {
   rooms: Room[] = [];
   selectedRoom: any = null;
 
-  constructor(private roomService:RoomService, private modalService: NgbModal) {}
+  constructor(private roomService:RoomService, private modalService: NgbModal, private storeService:StoreService) {}
 
   ngOnInit(): void {
     this.loadRooms();
+    this.storeService.refreshPatients$.subscribe(() => {
+      if (this.selectedRoom) {
+        this.getPatientsByRoom(this.selectedRoom.id);
+      }
+    });
   }
 
   loadRooms(): void {
@@ -26,6 +32,7 @@ export class CardListComponent implements OnInit {
       if (rooms.length > 0) {
         this.selectedRoom = rooms[0];
         this.getPatientsByRoom(this.selectedRoom.id)
+        this.storeService.setRoom(this.selectedRoom);
       }
     })
   }
@@ -39,6 +46,7 @@ export class CardListComponent implements OnInit {
   selectRoom(room: Room): void {
     this.selectedRoom = room;
     this.getPatientsByRoom(this.selectedRoom.id);
+    this.storeService.setRoom(room);
   }
   onMoreClick(): void {
   }

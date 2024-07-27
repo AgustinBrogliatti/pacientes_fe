@@ -20,5 +20,10 @@ export class RoomService {
   }
 
   detelePatienfromRoom(patientDni: number, roomId: number): Observable<Room> {
-    return this.api.detelePatienfromRoom(patientDni, roomId);    }
+    return this.api.detelePatienfromRoom(patientDni, roomId);
+  }
+
+  addToLine(patientDni: number, roomId: number): Observable<Room> {
+    return this.api.addToLine(patientDni, roomId);
+  }
 }

@@ -63,4 +63,8 @@ export class ApiService {
     return this.http.delete<Room>(this._url + 'room/' + roomId + '/patients?patientId=' + patientDni, this.getAuthHeader())
   }
 
+  addToLine(patientDni: number, roomId: number): Observable<Room> {
+    return this.http.post<Room>(this._url + 'room/' + roomId + '/patients?patientId=' + patientDni, null, this.getAuthHeader())
+  }
+
 }

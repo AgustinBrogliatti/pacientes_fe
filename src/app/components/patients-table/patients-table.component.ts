@@ -3,6 +3,9 @@ import {RecordService} from "../../services/record.service";
 import {RecordPreview} from "../../model/RecordPreview";
 import { RecordDetailModalComponent } from '../record-detail-modal/record-detail-modal.component';
 import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
+import {StoreService} from "../../services/store.service";
+import {RoomService} from "../../services/room.service";
+import {MedicalRecord} from "../../model/MedicalRecord";
 
 @Component({
   selector: 'app-patients-table',
@@ -20,7 +23,7 @@ export class PatientsTableComponent implements OnInit {
   ];
 
 
-  constructor(private recordService:RecordService, private modalService: NgbModal) {}
+  constructor(private recordService:RecordService, private modalService: NgbModal, private storeService:StoreService, private roomService:RoomService) {}
 
 
   ngOnInit(): void {
@@ -44,8 +47,13 @@ export class PatientsTableComponent implements OnInit {
     modalRef.componentInstance.recordId = id;
   }
 
-  addToLine(paciente: any) {
-    // Lógica para añadir paciente a la fila de espera
+  addToLine(record: any) {
+    const roomId = this.storeService.getRoom()?.id;
+    this.roomService.addToLine(record.patientDni, roomId!).subscribe(
+      (data) => {
+        this.storeService.triggerRefresh();
+      }
+    );
   }
 
 
